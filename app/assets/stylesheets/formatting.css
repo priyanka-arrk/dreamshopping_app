@@ -1,0 +1,56 @@
+h1.head{
+	text-align: center;
+	color: rgb(222, 110, 179);
+}
+
+h3{
+	text-align: justify;
+	font-family: 'Georgia'
+}
+body{
+	font-family:Arial, Helvetica, sans-serif;
+}
+p.about {
+	background-color:rgb(222, 187, 205);
+	text-align: center;
+	font-family: "Palatino Linotype";
+    font-size: 20px;
+    text-indent: 50px;
+    line-height: 1.8;
+}
+p.normal {
+    font-style: normal;
+}
+
+p.italic {
+    font-style: italic;
+}
+
+p.oblique {
+    font-style: oblique;
+}
+
+p.size
+{
+	font-size: 20px;
+}
+/*div{
+	padding: 10px;
+}*/
+.footer_margin
+{
+	margin-top: 10px;
+}
+.user_align
+{
+	align: right;
+}
+
+.spacing_for_new
+{
+   	margin-top: 20px;
+}
+.spacing_margin_bottom
+{
+	margin-bottom:20px;
+}

@@ -1,0 +1,87 @@
+<%= form_for @product, :html => { :class => "form-horizontal product", :multipart => true } do |read_form| %>
+
+  <% if @product.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-name"><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= read_form.label :Category_name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.collection_select :category_id, Category.all, :id, :name %>
+    </div>
+    <%=read_form.error_span(:name) %>
+  </div>
+
+  <div class="form-group">
+    <%= read_form.label :name, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.text_field :name, :class => 'form-control' %>
+    </div>
+    <%=read_form.error_span(:name) %>
+  </div>
+  <div class="form-group">
+    <%= read_form.label :product_type, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.text_field :product_type, :class => 'form-control' %>
+    </div>
+    <%= read_form.error_span(:product_type) %>
+  </div>
+  <div class="form-group">
+    <%= read_form.label :brand, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.text_field :brand, :class => 'form-control' %>
+    </div>
+    <%= read_form.error_span(:brand) %>
+  </div>
+
+  <div class="form-group">
+    <%= read_form.label :color, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.text_field :color, :class => 'form-control' %>
+    </div>
+    <%=read_form.error_span(:color) %>
+  </div>
+
+  <div class="form-group">
+    <%= read_form.label :price, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.text_field :price, :class => 'form-control' %>
+    </div>
+    <%= read_form.error_span(:price) %>
+  </div>
+  <div class="form-group">
+    <%= read_form.label :warranty_in_months, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.text_field :warranty_in_months, :class => 'form-control' %>
+    </div>
+    <%= read_form.error_span(:warranty_in_months) %>
+  </div>
+
+  <div class="form-group">
+    <%= read_form.label :image, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= read_form.file_field :image, :class => 'form-control' %>
+    </div>
+    <%= read_form.error_span(:image) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= read_form.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DreamShopping</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <!-- <h1> DreamShopping </h1> -->
+</head>
+<body>
+
+    <div class="navbar navbar-default  navbar-fixed-top">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+      </button>
+     <%= link_to "DreamShopping", welcome_index_path , class: "navbar-brand" %>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+
+		    <%= menu_group do %>
+		        <%= drop_down "Category" do %>
+              <% get_category.each do |category| %>
+                <li> <%= link_to category. name, products_path(category_id: category.id) %></li>
+              <% end%>
+            <% end %>
+
+		        <%= menu_item "Products", products_path %>
+				    <%= menu_item "About Us", about_path %>
+		        <%= menu_item "Contact Us", contact_us_path %>
+            <% unless user_signed_in? %>
+              <li><%= link_to "Sign In", new_user_session_path  %></li>
+            <%else%>
+               <li><%#= link_to image_tag  current_user.avatar, :size=>"28"  %></li>
+              <li><%= link_to current_user.email ,""%></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+            <%end%>
+    		    <% end %>
+        </div>
+      </div>
+    </div>
+
+<div class="col-md-12" style="margin-top: 100px;">
+  <%= bootstrap_flash %>
+  <%= yield %>
+</div>
+
+<footer class= "footer_margin">
+  <p>&copy; dream shopping</p>
+</footer>
+
+</body>
+</html>
